@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layer-list xmlns:android="http://schemas.android.com/apk/res/android">
+    <item android:left="2dp" android:right="2dp">
+        <shape android:shape="rectangle">
+            <corners
+                    android:bottomLeftRadius="12dp"
+                    android:bottomRightRadius="12dp"
+                    android:topLeftRadius="12dp"
+                    android:topRightRadius="4dp"></corners>
+            <solid android:color="@color/keyboardBoarder"/>
+        </shape>
+    </item>
+    <item android:bottom="2dp">
+        <shape android:shape="rectangle">
+            <corners
+                    android:bottomLeftRadius="4dp"
+                    android:bottomRightRadius="4dp"
+                    android:topLeftRadius="4dp"
+                    android:topRightRadius="4dp"></corners>
+            <solid android:color="@color/keyboardDivider"/>
+        </shape>
+    </item>
+</layer-list>

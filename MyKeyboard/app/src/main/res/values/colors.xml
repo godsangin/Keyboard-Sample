@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <color name="colorPrimary">#008577</color>
+    <color name="colorPrimaryDark">#00574B</color>
+    <color name="colorAccent">#D81B60</color>
+
+    <color name="keyboardBoarder">#ddd</color>
+    <color name="keyboardBackground">#eee</color>
+    <color name="keyboardDivider">#fff</color>
+    <color name="keyboardPressed">#ff95A5A6</color>
+    <color name="setting_header_background">#0099ff</color>
+    <drawable name="screen_background_holo_light">#fff3f3f3</drawable>
+</resources>

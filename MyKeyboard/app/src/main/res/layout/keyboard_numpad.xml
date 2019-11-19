@@ -1,0 +1,181 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+              android:orientation="vertical"
+              android:layout_width="match_parent"
+              android:layout_height="match_parent">
+    <LinearLayout
+            android:id="@+id/first_line"
+            android:layout_width="match_parent"
+            android:layout_height="50dp"
+            android:layout_weight="1"
+            android:orientation="horizontal">
+        <include
+                layout="@layout/keyboard_item"
+                android:id="@+id/testview"
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_weight="1"
+                android:layout_margin="2dp">
+
+        </include>
+        <include
+                layout="@layout/keyboard_item"
+                android:id="@+id/testview"
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_weight="1"
+                android:layout_margin="2dp">
+
+        </include>
+        <include
+                layout="@layout/keyboard_item"
+                android:id="@+id/testview"
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_weight="1"
+                android:layout_margin="2dp">
+
+        </include>
+        <include
+                layout="@layout/keyboard_item"
+                android:id="@+id/testview"
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_weight="1"
+                android:layout_margin="2dp">
+
+        </include>
+    </LinearLayout>
+    <LinearLayout
+            android:id="@+id/second_line"
+            android:layout_width="match_parent"
+            android:layout_height="50dp"
+            android:layout_weight="1"
+            android:orientation="horizontal">
+        <include
+                layout="@layout/keyboard_item"
+                android:id="@+id/testview"
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_weight="1"
+                android:layout_margin="2dp">
+
+        </include>
+        <include
+                layout="@layout/keyboard_item"
+                android:id="@+id/testview"
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_weight="1"
+                android:layout_margin="2dp">
+
+        </include>
+        <include
+                layout="@layout/keyboard_item"
+                android:id="@+id/testview"
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_weight="1"
+                android:layout_margin="2dp">
+
+        </include>
+        <include
+                layout="@layout/keyboard_item"
+                android:id="@+id/testview"
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_weight="1"
+                android:layout_margin="2dp">
+
+        </include>
+    </LinearLayout>
+    <LinearLayout
+            android:id="@+id/third_line"
+            android:layout_width="match_parent"
+            android:layout_height="50dp"
+            android:layout_weight="1"
+            android:orientation="horizontal">
+        <include
+                layout="@layout/keyboard_item"
+                android:id="@+id/testview"
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_weight="1"
+                android:layout_margin="2dp">
+
+        </include>
+        <include
+                layout="@layout/keyboard_item"
+                android:id="@+id/testview"
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_weight="1"
+                android:layout_margin="2dp">
+
+        </include>
+        <include
+                layout="@layout/keyboard_item"
+                android:id="@+id/testview"
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_weight="1"
+                android:layout_margin="2dp">
+
+        </include>
+        <include
+                layout="@layout/keyboard_item"
+                android:id="@+id/testview"
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_weight="1"
+                android:layout_margin="2dp">
+
+        </include>
+    </LinearLayout>
+    <LinearLayout
+            android:id="@+id/fourth_line"
+            android:layout_width="match_parent"
+            android:layout_height="50dp"
+            android:layout_weight="1"
+            android:orientation="horizontal">
+        <include
+                layout="@layout/keyboard_item"
+                android:id="@+id/testview"
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_weight="1"
+                android:layout_margin="2dp">
+
+        </include>
+        <include
+                layout="@layout/keyboard_item"
+                android:id="@+id/testview"
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_weight="1"
+                android:layout_margin="2dp">
+
+        </include>
+        <include
+            layout="@layout/keyboard_item"
+            android:id="@+id/testview"
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            android:layout_margin="2dp">
+
+    </include>
+        <include
+                layout="@layout/keyboard_item"
+                android:id="@+id/testview"
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_weight="1"
+                android:layout_margin="2dp">
+
+        </include>
+
+    </LinearLayout>
+
+
+</LinearLayout>

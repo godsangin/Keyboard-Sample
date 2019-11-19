@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout
+        xmlns:android="http://schemas.android.com/apk/res/android"
+        xmlns:tools="http://schemas.android.com/tools"
+        xmlns:app="http://schemas.android.com/apk/res-auto"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        tools:context=".MainActivity">
+    <include
+        android:id="@+id/setting_header"
+        layout="@layout/setting_header"
+        />
+
+
+    <TextView
+            android:id="@+id/testview"
+            android:layout_width="300dp"
+            android:layout_height="wrap_content"
+            android:text="'설정' > '일반' > '언어 및 입력방식' > '스크린 키보드'에서 MyKeyboard를 추가한 후 사용하실 수 있습니다."
+            android:background="@drawable/textlines"
+            android:padding="8dp"
+            android:layout_margin="8dp"
+            app:layout_constraintLeft_toLeftOf="parent"
+            app:layout_constraintRight_toRightOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/setting_header"/>
+    <EditText
+            android:layout_width="200dp"
+            android:layout_height="wrap_content"
+            app:layout_constraintTop_toBottomOf="@id/testview"
+            app:layout_constraintLeft_toLeftOf="parent"
+            app:layout_constraintRight_toRightOf="parent"
+            android:layout_margin="16dp"
+            android:hint="test input"/>
+</androidx.constraintlayout.widget.ConstraintLayout>
