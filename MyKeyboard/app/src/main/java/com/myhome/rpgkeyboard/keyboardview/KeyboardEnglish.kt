@@ -47,10 +47,7 @@ class KeyboardEnglish constructor(var context:Context, var layoutInflater: Layou
     var capsView:ImageView? = null
 
     fun init() {
-        context = context
         englishLayout = layoutInflater.inflate(R.layout.keyboard_action, null) as LinearLayout
-        inputConnection = inputConnection
-        keyboardInterationListener = keyboardInterationListener
         vibrator = context.getSystemService(Context.VIBRATOR_SERVICE) as Vibrator
 
 

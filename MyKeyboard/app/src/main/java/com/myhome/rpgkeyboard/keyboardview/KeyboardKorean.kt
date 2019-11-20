@@ -52,10 +52,8 @@ class KeyboardKorean constructor(var context:Context, var layoutInflater: Layout
 
     fun init(){
         koreanLayout = layoutInflater.inflate(R.layout.keyboard_action, null) as LinearLayout
-        keyboardInterationListener = keyboardInterationListener
         hangulMaker = HangulMaker(inputConnection!!)
         vibrator = context.getSystemService(Context.VIBRATOR_SERVICE) as Vibrator
-        context = context
 
         sharedPreferences = context.getSharedPreferences("setting", Context.MODE_PRIVATE)
 
