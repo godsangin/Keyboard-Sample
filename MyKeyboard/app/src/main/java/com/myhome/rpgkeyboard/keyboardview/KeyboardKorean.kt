@@ -32,7 +32,6 @@ class KeyboardKorean constructor(var context:Context, var layoutInflater: Layout
     var inputConnection:InputConnection? = null
         set(inputConnection){
             field = inputConnection
-            hangulMaker = HangulMaker(inputConnection!!)
     }
     var sound = 0
     var vibrate = 0
@@ -111,6 +110,8 @@ class KeyboardKorean constructor(var context:Context, var layoutInflater: Layout
     }
 
     fun getLayout():LinearLayout{
+        hangulMaker = HangulMaker(inputConnection!!)
+        setLayoutComponents()
         return koreanLayout
     }
 
@@ -198,50 +199,6 @@ class KeyboardKorean constructor(var context:Context, var layoutInflater: Layout
         }
     }
 
-    private fun getMyLongClickListener(textView:TextView):View.OnLongClickListener{
-        val longClickListener = object:View.OnLongClickListener{
-            override fun onLongClick(p0: View?): Boolean {
-                if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP) {
-                    inputConnection!!.requestCursorUpdates(InputConnection.CURSOR_UPDATE_IMMEDIATE)
-                }
-                playVibrate()
-                val cursorcs:CharSequence? =  inputConnection?.getSelectedText(InputConnection.GET_TEXT_WITH_STYLES)
-                if(cursorcs != null && cursorcs.length >= 2){
-
-                    val eventTime = SystemClock.uptimeMillis()
-                    inputConnection?.finishComposingText()
-                    inputConnection?.sendKeyEvent(KeyEvent(eventTime, eventTime,
-                        KeyEvent.ACTION_DOWN, KeyEvent.KEYCODE_DEL, 0, 0, 0, 0,
-                        KeyEvent.FLAG_SOFT_KEYBOARD))
-                    inputConnection?.sendKeyEvent(KeyEvent(SystemClock.uptimeMillis(), eventTime,
-                        KeyEvent.ACTION_UP, KeyEvent.KEYCODE_DEL, 0, 0, 0, 0,
-                        KeyEvent.FLAG_SOFT_KEYBOARD))
-                    hangulMaker.clear()
-                }
-                when (textView.text.toString()) {
-                    "한/영" -> {
-                        keyboardInterationListener.modechange(0)
-                        hangulMaker.clear()
-                    }
-                    "!#1" -> {
-                        keyboardInterationListener.modechange(2)
-                        hangulMaker.clear()
-                    }
-                    else -> {
-                        playClick(textView.text.toString().toCharArray().get(0).toInt())
-                        hangulMaker.directlyCommit()
-                        inputConnection?.commitText(textView.text.toString(), 1)
-                        if(isCaps){
-                            modeChange()
-                        }
-                    }
-                }
-                return true
-            }
-        }
-        return longClickListener
-    }
-
     private fun getMyClickListener(actionButton:Button):View.OnClickListener{
 
         val clickListener = (View.OnClickListener {
@@ -263,14 +220,7 @@ class KeyboardKorean constructor(var context:Context, var layoutInflater: Layout
                 hangulMaker.clear()
             }
             when (actionButton.text.toString()) {
-                "한/영" -> {
-                    keyboardInterationListener.modechange(0)
-                    hangulMaker.clear()
-                }
-                "!#1" -> {
-                    keyboardInterationListener.modechange(2)
-                    hangulMaker.clear()
-                }
+
                 else -> {
                     playClick(actionButton.text.toString().toCharArray().get(0).toInt())
                     try{
@@ -373,24 +323,31 @@ class KeyboardKorean constructor(var context:Context, var layoutInflater: Layout
                         spacialKey.setOnTouchListener(getOnTouchListener(myOnClickListener))
                         spacialKey.setBackgroundResource(R.drawable.key_background)
                     }
+                    "한/영" -> {
+                        actionButton.text = myText[item]
+                        buttons.add(actionButton)
+                        myOnClickListener = object :View.OnClickListener{
+                            override fun onClick(p0: View?) {
+                                keyboardInterationListener.modechange(0)
+                            }
+                        }
+                        actionButton.setOnClickListener(myOnClickListener)
+                    }
+                    "!#1" -> {
+                        actionButton.text = myText[item]
+                        buttons.add(actionButton)
+                        myOnClickListener = object :View.OnClickListener{
+                            override fun onClick(p0: View?) {
+                                keyboardInterationListener.modechange(2)
+                            }
+                        }
+                        actionButton.setOnClickListener(myOnClickListener)
+                    }
                     else -> {
-                        val longClickTextView = children[item].findViewById<TextView>(R.id.text_long_click)
                         actionButton.text = myText[item]
                         buttons.add(actionButton)
                         myOnClickListener = getMyClickListener(actionButton)
-                        if(line > 0 && line < 4){//특수기호가 삽입될 수 있는 라인
-                            longClickTextView.setText(myLongClickKeysText[line - 1].get(longClickIndex++))
-                            longClickTextView.bringToFront()
-                            longClickTextView.setOnClickListener(myOnClickListener)
-                            if(!actionButton.text.equals("ㅋ")){
-                                actionButton.setOnLongClickListener(getMyLongClickListener(longClickTextView))
-                                longClickTextView.setOnLongClickListener(getMyLongClickListener(longClickTextView))
-                            }
-                            else{
-                                actionButton.setOnTouchListener(getOnTouchListener(myOnClickListener))
-                                longClickTextView.setOnTouchListener(getOnTouchListener(myOnClickListener))
-                            }
-                        }
+                        actionButton.setOnTouchListener(getOnTouchListener(myOnClickListener))
                     }
                 }
                 children[item].setOnClickListener(myOnClickListener)
@@ -408,7 +365,22 @@ class KeyboardKorean constructor(var context:Context, var layoutInflater: Layout
     fun getDeleteAction():View.OnClickListener{
         return View.OnClickListener{
             playVibrate()
-            hangulMaker.delete()
+            val cursorcs:CharSequence? =  inputConnection?.getSelectedText(InputConnection.GET_TEXT_WITH_STYLES)
+            if(cursorcs != null && cursorcs.length >= 2){
+
+                val eventTime = SystemClock.uptimeMillis()
+                inputConnection?.finishComposingText()
+                inputConnection?.sendKeyEvent(KeyEvent(eventTime, eventTime,
+                    KeyEvent.ACTION_DOWN, KeyEvent.KEYCODE_DEL, 0, 0, 0, 0,
+                    KeyEvent.FLAG_SOFT_KEYBOARD))
+                inputConnection?.sendKeyEvent(KeyEvent(SystemClock.uptimeMillis(), eventTime,
+                    KeyEvent.ACTION_UP, KeyEvent.KEYCODE_DEL, 0, 0, 0, 0,
+                    KeyEvent.FLAG_SOFT_KEYBOARD))
+                hangulMaker.clear()
+            }
+            else{
+                hangulMaker.delete()
+            }
         }
     }
 
