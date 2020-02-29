@@ -78,7 +78,6 @@ open class HangulMaker {
                     cho = c
                     inputConnection.setComposingText(cho.toString(), 1)
                 }else{//중성일 경우
-                    Log.d("thisBlock==", "true")
                     state = 2
                     jun = c
                     inputConnection.setComposingText(makeHan().toString(), 1)
@@ -152,10 +151,8 @@ open class HangulMaker {
     }
 
     fun commitSpace(){
-        inputConnection.commitText(makeHan().toString(), 1)
+        directlyCommit()
         inputConnection.commitText(" ", 1)
-        state = 0
-        clear()
     }
 
     open fun directlyCommit(){
@@ -170,13 +167,7 @@ open class HangulMaker {
     open fun delete(){
         when(state){
             0 -> {
-                if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.N) {
-                    inputConnection.deleteSurroundingTextInCodePoints(1,0)
-                }
-                else{
-                    inputConnection.deleteSurroundingText(1, 0)
-                }
-                inputConnection.commitText("",1)
+                inputConnection.deleteSurroundingText(1, 0)
             }
             1 -> {
                 cho = '\u0000'
