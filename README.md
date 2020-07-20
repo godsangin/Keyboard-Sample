@@ -34,4 +34,4 @@
 > - firstmodel의 경우 "", "ㅂ", "바", "박", "ㅏ" 의 다섯가지 상태를 가짐.
 > - 각자의 상태에서 기대되는 다음 입력에 따라 상태가 변함.
 > - 이중모음, 이중자음은 Flag를 통하여 처리
-![ex_screenshot](./keyboardAutomata.PNG)
+![ex_screenshot](./keyboardAutomata.png)
